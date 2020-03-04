@@ -1,5 +1,5 @@
 =================
 == Hoax Elixir ==
 =================
-
-Fake ID card generator for The Great Hack game
+Fake person generator.
+Name, Lastname, Gender, Age, Personal ID and Personal Computer.

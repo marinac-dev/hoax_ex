@@ -61,6 +61,7 @@ defmodule HoaxEx.Person.State do
       WI: "Wisconsin",
       WY: "Wyoming"
     }
+
     Enum.random(states)
   end
 end

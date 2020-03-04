@@ -1,11 +1,11 @@
-defmodule HoaxEx.Person do
+defmodule HoaxEx.Person.Main do
   alias HoaxEx.Person.{Name, Lastname, State}
-  @def_opts %{sex: :r, name: :r, lastname: :r, age: :r}
+  @def_opts %{sex: :r, name: :r, lastname: :r}
 
   def generate(opts \\ %{}) do
     opts = Map.merge(@def_opts, opts)
     [name, sex] = get_name(opts.name, opts.sex)
-    lastname = get_lastname()
+    lastname = get_lastname(opts.lastname)
     age = Enum.random(18..20)
     {s_id, state} = State.get()
     id = get_id(s_id)
@@ -27,7 +27,8 @@ defmodule HoaxEx.Person do
   defp get_name(:r, :f), do: [Name.female(), :f]
   defp get_name(custom, :m), do: [custom, :m]
   defp get_name(custom, :f), do: [custom, :f]
-  defp get_lastname(), do: Lastname.get()
+  defp get_lastname(:r), do: Lastname.get()
+  defp get_lastname(lastname), do: lastname
 
   defp get_id(state) do
     part1 = :crypto.strong_rand_bytes(2) |> Base.encode16()
